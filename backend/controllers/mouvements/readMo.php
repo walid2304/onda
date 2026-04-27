@@ -1,9 +1,11 @@
 <?php
 require_once __DIR__ . '/../../config/database.php';
+require_once __DIR__ . '/../../config/app.php';
+
 header("Content-Type: application/json");
 
 $stmt = $pdo->query("
-    SELECT 
+    SELECT
         m.*,
         mat.designation,
         a.nom AS affectation,
@@ -52,12 +54,11 @@ foreach ($dataRaw as $row) {
             "type_fichier" => $row['type_fichier'],
             "taille_fichier" => $row['taille_fichier'],
             "date_upload" => $row['date_upload'],
-            "download_url" => $row['chemin_fichier'], // lien direct pour téléchargement
+            "download_url" => justificatif_download_url((int) $row['id_justificatif']),
         ];
     }
 }
 
-// Ajouter nb_justificatifs
 foreach ($mouvements as &$mouv) {
     $mouv['nb_justificatifs'] = count($mouv['justificatifs']);
 }
@@ -69,4 +70,3 @@ echo json_encode([
     "success" => true,
     "data" => $mouvements
 ]);
-?>

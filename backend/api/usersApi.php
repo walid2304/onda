@@ -1,20 +1,12 @@
 <?php
-
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit();
-}
-
+require_once __DIR__ . '/../config/cors.php';
+apply_cors();
 
 if (!isset($_GET['endpoint']) || empty($_GET['endpoint'])) {
-    echo json_encode(["error" => "Paramètre 'endpoint' manquant ou vide dans l'URL."]);
+    echo json_encode(["error" => "Parametre 'endpoint' manquant ou vide dans l'URL."]);
     exit();
 }
+
 $request = $_GET['endpoint'];
 
 switch ($request) {
@@ -40,6 +32,6 @@ switch ($request) {
         require "../controllers/users/deconnexion.php";
         break;
     default:
-        echo json_encode(["error" => "Endpoint non trouvé"]);
+        echo json_encode(["error" => "Endpoint non trouve"]);
         break;
 }
