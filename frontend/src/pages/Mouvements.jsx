@@ -12,6 +12,7 @@ import { getMaterielsES } from "../redux/materiel/thunks/getMaterielESThunks";
 import { getAffectations } from "../redux/affectation/thunks/getAffectationsThunk";
 import { getBonSorties } from "../redux/bon_sortie/thunks/getBonSortieThunks";
 import Pagination from "../pagination/Pagination";
+import { fileUrl } from "../config/api";
 
 const Mouvements = () => {
   const dispatch = useDispatch();
@@ -775,7 +776,7 @@ const Mouvements = () => {
                     </div>
                     <div className="flex gap-2">
                       <a
-                        href={`http://localhost/gestion_stock-onda-2fd7d866fcd83965731011b3115bc0186dd89b16/backend/serve-file.php?file=${j.chemin_fichier}`}
+                        href={fileUrl(j.chemin_fichier)}
                         className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 text-sm"
                         download={j.nom_fichier}
                       >

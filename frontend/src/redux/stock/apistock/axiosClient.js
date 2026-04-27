@@ -1,8 +1,8 @@
 import axios from "axios";
+import { apiUrl } from "../../../config/api";
 
 const axiosClient = axios.create({
-  baseURL:
-    "http://localhost/gestion_stock-onda-2fd7d866fcd83965731011b3115bc0186dd89b16/backend/api/stockApi.php",
+  baseURL: apiUrl("stockApi.php"),
   headers: {
     "Content-Type": "application/json",
   },
