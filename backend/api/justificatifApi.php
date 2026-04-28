@@ -1,10 +1,16 @@
 <?php
-require_once __DIR__ . '/../config/cors.php';
-
 $request = $_GET['endpoint'] ?? '';
 
 if ($request !== 'download') {
-    apply_cors(['GET', 'POST', 'DELETE', 'OPTIONS']);
+    header("Access-Control-Allow-Origin: https://onda-delta.vercel.app");
+    header("Vary: Origin");
+    header("Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
+    if (($_SERVER['REQUEST_METHOD'] ?? '') === 'OPTIONS') {
+        http_response_code(200);
+        exit();
+    }
 }
 
 switch ($request) {

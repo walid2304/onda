@@ -11,6 +11,11 @@ Ton URL finale peut ressembler a l'un de ces formats :
 
 Si tu gardes le dossier `backend` visible dans l'URL, il faut conserver ce suffixe dans l'adresse du back.
 
+Si Infinity affiche `No index file was found for your website!`, il manque simplement une page d'accueil dans `htdocs`.
+
+- Si tu deploies le repo complet sur l'hebergement, garde aussi le fichier [index.php](C:\xampp\htdocs\gestion_stock-onda-2fd7d866fcd83965731011b3115bc0186dd89b16\index.php) a la racine.
+- Si tu pointes directement ton domaine API vers le contenu du dossier `backend`, le fichier [backend/index.php](C:\xampp\htdocs\gestion_stock-onda-2fd7d866fcd83965731011b3115bc0186dd89b16\backend\index.php) sert de page d'accueil pour l'API.
+
 ## 2. Base de donnees backend
 
 Le fichier [backend/config/database.php](C:\xampp\htdocs\gestion_stock-onda-2fd7d866fcd83965731011b3115bc0186dd89b16\backend\config\database.php) accepte maintenant :
